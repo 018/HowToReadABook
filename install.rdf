@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<RDF:RDF
+    xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+    xmlns:NC="http://home.netscape.com/NC-rdf#"
+    xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <RDF:Description
+        RDF:about="rdf:#$x61SL3"
+        em:id="{3347BADE-6337-4510-9499-B6DFB02964F4}"
+        em:minVersion="2.0"
+        em:maxVersion="20.*"/>
+    <RDF:Description
+        RDF:about="urn:mozilla:install-manifest"
+        em:id="HowToReadABook@018.ai"
+        em:name="HowToReadABook"
+        em:version="1.0.0"
+        em:type="2"
+        em:iconURL="chrome://HowToReadABook/skin/HowToReadABook.png"
+        em:icon64URL="chrome://HowToReadABook/skin/HowToReadABook64.png"
+        em:creator="018"
+        em:description="《如何阅读一本书》"
+        em:homepageURL="https://github.com/018/HowToReadABook"
+        em:updateURL="https://raw.githubusercontent.com/018/HowToReadABook/main/update.rdf">
+        <em:type>2</em:type>
+        <em:targetApplication RDF:resource="rdf:#$x61SL3"/>
+        <em:targetApplication>
+            <Description>
+                <em:id>zotero@chnm.gmu.edu</em:id>
+                <em:minVersion>5.0.66</em:minVersion>
+                <em:maxVersion>5.0.*</em:maxVersion>
+            </Description>
+        </em:targetApplication>
+    </RDF:Description>
+</RDF:RDF>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://HowToReadABook/locale/overlay.dtd">
+
+<overlay
+    id="HowToReadABook-overlay"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <stringbundleset>
+        <stringbundle
+            id="HowToReadABook-bundle"
+            src="chrome://HowToReadABook/locale/HowToReadABook.properties"/>
+    </stringbundleset>
+
+    <script
+        type="application/x-javascript"
+        src="chrome://HowToReadABook/content/HowToReadABook.js"/>
+
+    <popup
+        id="zotero-itemmenu">
+        <menu id="zotero-itemmenu-HowToReadABook" label="&zotero.HowToReadABook.HowToReadABook.label;">
+            <menupopup id="zotero-itemmenu-HowToReadABook-menupopup">
+                <menuitem
+                    id="zotero-itemmenu-HowToReadABook-inspectionalreading"
+                    label="&zotero.HowToReadABook.inspectionalreading.label;"
+                    oncommand="Zotero.HowToReadABook.inspectionalreading()"/>
+                <menuitem
+                    id="zotero-itemmenu-HowToReadABook-analyticalreading"
+                    label="&zotero.HowToReadABook.analyticalreading.label;"
+                    oncommand="Zotero.HowToReadABook.analyticalreading()"/>
+                <menuitem
+                    id="zotero-itemmenu-HowToReadABook-syntopicalreading"
+                    label="&zotero.HowToReadABook.syntopicalreading.label;"
+                    oncommand="Zotero.HowToReadABook.syntopicalreading()"/>
+                    
+                <menuseparator
+                    id="zotero-itemmenu-HowToReadABook-separator1"/>
+
+                <menuitem
+                    id="zotero-itemmenu-HowToReadABook-structuralnotemaking"
+                    label="&zotero.HowToReadABook.structuralnotemaking.label;"
+                    oncommand="Zotero.HowToReadABook.structuralnotemaking()"/>
+                <menuitem
+                    id="zotero-itemmenu-HowToReadABook-conceptualnotemaking"
+                    label="&zotero.HowToReadABook.conceptualnotemaking.label;"
+                    oncommand="Zotero.HowToReadABook.conceptualnotemaking()"/>
+                <menuitem
+                    id="zotero-itemmenu-HowToReadABook-concentratenotemaking"
+                    label="&zotero.HowToReadABook.concentratenotemaking.label;"
+                    oncommand="Zotero.HowToReadABook.concentratenotemaking()"/>
+            </menupopup>
+        </menu>
+    </popup>
+</overlay>

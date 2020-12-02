@@ -1,0 +1,7 @@
+content HowToReadABook chrome/content/
+
+skin    HowToReadABook  default chrome/skin/default/
+locale  HowToReadABook  en-US   chrome/locale/en-US/
+locale  HowToReadABook  zh-CN   chrome/locale/zh-CN/
+
+overlay chrome://zotero/content/zoteroPane.xul chrome://HowToReadABook/content/overlay.xul
