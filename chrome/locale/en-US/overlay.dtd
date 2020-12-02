@@ -1,6 +1,9 @@
 <!ENTITY zotero.HowToReadABook.HowToReadABook.label "HowToReadABook">
 <!ENTITY zotero.HowToReadABook.inspectionalreading.label "Inspectional Reading">
 <!ENTITY zotero.HowToReadABook.analyticalreading.label "Analytical Reading">
+<!ENTITY zotero.HowToReadABook.argumentationanalyticalreading.label "Argumentation">
+<!ENTITY zotero.HowToReadABook.realisticanalyticalreading.label "Practicability">
+<!ENTITY zotero.HowToReadABook.visualizeanalyticalreading.label "Visualize">
 <!ENTITY zotero.HowToReadABook.syntopicalreading.label "Syntopical Reading">
 
 <!ENTITY zotero.HowToReadABook.structuralnotemaking.label "Structural note-making">

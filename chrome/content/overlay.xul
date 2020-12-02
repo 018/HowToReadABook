@@ -23,10 +23,22 @@
                     id="zotero-itemmenu-HowToReadABook-inspectionalreading"
                     label="&zotero.HowToReadABook.inspectionalreading.label;"
                     oncommand="Zotero.HowToReadABook.inspectionalreading()"/>
-                <menuitem
-                    id="zotero-itemmenu-HowToReadABook-analyticalreading"
-                    label="&zotero.HowToReadABook.analyticalreading.label;"
-                    oncommand="Zotero.HowToReadABook.analyticalreading()"/>
+                <menu id="zotero-itemmenu-HowToReadABook-analyticalreadingmenu" label="&zotero.HowToReadABook.analyticalreading.label;">
+                    <menupopup id="zotero-itemmenu-HowToReadABook-analyticalreading-menupopup">
+                        <menuitem
+                            id="zotero-itemmenu-HowToReadABook-analyticalreading"
+                            label="&zotero.HowToReadABook.argumentationanalyticalreading.label;"
+                            oncommand="Zotero.HowToReadABook.analyticalreading()"/>
+                        <menuitem
+                            id="zotero-itemmenu-HowToReadABook-realisticanalyticalreading"
+                            label="&zotero.HowToReadABook.realisticanalyticalreading.label;"
+                            oncommand="Zotero.HowToReadABook.realisticanalyticalreading()"/>
+                        <menuitem
+                            id="zotero-itemmenu-HowToReadABook-visualizeanalyticalreading"
+                            label="&zotero.HowToReadABook.visualizeanalyticalreading.label;"
+                            oncommand="Zotero.HowToReadABook.visualizeanalyticalreading()"/>
+                    </menupopup>
+                </menu>
                 <menuitem
                     id="zotero-itemmenu-HowToReadABook-syntopicalreading"
                     label="&zotero.HowToReadABook.syntopicalreading.label;"

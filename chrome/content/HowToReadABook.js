@@ -60,8 +60,9 @@ HowToReadABook.refreshZoteroItemPopup = function () {
   var onlyOne = zitems1 && zitems1.length === 1;
   var hidden = !isRegular || !onlyOne;
 
+  document.getElementById("zotero-itemmenu-HowToReadABook").hidden = hidden;
   document.getElementById("zotero-itemmenu-HowToReadABook-inspectionalreading").hidden = hidden;
-  document.getElementById("zotero-itemmenu-HowToReadABook-analyticalreading").hidden = hidden;
+  document.getElementById("zotero-itemmenu-HowToReadABook-analyticalreadingmenu").hidden = hidden;
   document.getElementById("zotero-itemmenu-HowToReadABook-syntopicalreading").hidden = hidden;
   document.getElementById("zotero-itemmenu-HowToReadABook-structuralnotemaking").hidden = hidden;
   document.getElementById("zotero-itemmenu-HowToReadABook-conceptualnotemaking").hidden = hidden;
@@ -75,16 +76,35 @@ HowToReadABook.initPrefs = function (item) {
       pref = Zotero.Prefs.get("HowToReadABook.inspectionalreading");
       if (!pref) {
         pref =
-          '<h3>Ⅱ. 检视阅读</h3>\\n<hr /><p><strong>阶段一 </strong>：系统略读。<span style="color: #808080;">(完成请打✔️，无请打➖。)</span><br />&nbsp;&nbsp;&nbsp;&nbsp;1. 看书名页、序——了解作者的相关说明或宗旨。<br />&nbsp;&nbsp;&nbsp;&nbsp;2. 研究目录页——对书的基本框架做概括性的理解。<br />&nbsp;&nbsp;&nbsp;&nbsp;3. 检阅索引——快速评估本书涵盖哪些议题的范围、书籍种类与作者等等。<br />&nbsp;&nbsp;&nbsp;&nbsp;4. 读出版者的介绍——是否吹嘘有助于了解本书。<br />&nbsp;&nbsp;&nbsp;&nbsp;5. 读几个跟主题息息相关的篇章——读篇章开头或结尾的摘要说明来了解主题。<br />&nbsp;&nbsp;&nbsp;&nbsp;6. 东翻翻西翻翻，念一两段，或连续读几页——随时寻找主要论点的讯号，留意主题的基本脉动。<br /><strong>&nbsp;&nbsp;&nbsp;&nbsp;结论：<br /></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. 这本书值不值得多花时间细读：<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. 本书的架构是什么：</p><p><strong>阶段二</strong>：粗浅阅读，了解全书的内容：</p><p><strong>出处</strong>：{authors}《{title}》({year})</p><p><strong>日期</strong>：{today}</p>';
+          '<h3>Ⅱ. 检视阅读</h3>\\n<hr /><p><strong>阶段一 ：系统略读。</strong><span style="color: #808080;">(完成请打✔️，无请打➖。)</span><br />&nbsp;&nbsp;&nbsp;&nbsp;1. 看书名页、序——了解作者的相关说明或宗旨。<br />&nbsp;&nbsp;&nbsp;&nbsp;2. 研究目录页——对书的基本框架做概括性的理解。<br />&nbsp;&nbsp;&nbsp;&nbsp;3. 检阅索引——快速评估本书涵盖哪些议题的范围、书籍种类与作者等等。<br />&nbsp;&nbsp;&nbsp;&nbsp;4. 读出版者的介绍——是否吹嘘有助于了解本书。<br />&nbsp;&nbsp;&nbsp;&nbsp;5. 读几个跟主题息息相关的篇章——读篇章开头或结尾的摘要说明来了解主题。<br />&nbsp;&nbsp;&nbsp;&nbsp;6. 东翻翻西翻翻，念一两段，或连续读几页——随时寻找主要论点的讯号，留意主题的基本脉动。<br /><strong>&nbsp;&nbsp;&nbsp;&nbsp;结论：<br /></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>1. 这本书值不值得多花时间细读：</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>2. 本书的架构是什么：</strong></p><p><strong>阶段二：粗浅阅读，了解全书的内容：</strong></p><p><strong>出处</strong>：{authors}《{title}》({year})</p><p><strong>日期</strong>：{today}</p>';
         Zotero.Prefs.set("HowToReadABook.inspectionalreading", pref);
       }
       break;
     case "analyticalreading":
+      // 分析阅读
       pref = Zotero.Prefs.get("HowToReadABook.analyticalreading");
       if (!pref) {
         pref =
-          '<h3>Ⅲ. 分析阅读<strong></strong></h3>\\n<hr /><p><strong>第一阶段：架构规则。</strong><br />1. 书籍分类：<span style="color: #999999;">理论性：历史、科学（心理学、几何学、物理学）和哲学；实用性：技巧、实用手册、教导。</span><br />2. 整本书在谈些什么：<span style="color: #999999;">一两句话或一小段话说。</span><br />3. 整体的架构<span style="color: #999999;">：（1）作者将全书分成五个部分，第一部分谈的是什么，第二部分谈的是什么，第三部分谈的是别的事，第四部分则是另外的观点，第五部分又是另一些事。（2）第一个主要的部分又分成三个段落，第一段落为X，第二段落为Y，第三段落为Z。（3）在第一部分的第一阶段，作者有四个重点，第一个重点是A，第二个重点是B，第三个重点是C，第四个重点是D等等。</span><br />4. 确定作者想要解决的问题：<span style="color: #999999;">找出作者要问的问题。</span><strong></strong></p><p><strong>第二阶段：诠释规则。</strong><br />5. 诠释作者使用的关键字：<span style="color: #999999;">找出重要单字，透过它们与作者达成共识。</span><br />6. 由最重要的句子中，抓住作者的重要主旨：<span style="color: #999999;">将一本书中最重要的句子圈出来，找出其中的主旨。</span><br />7. 知道作者的论述是什么，从内容中找出相关的句子，再重新架构出来。<span style="color: #999999;">从相关文句的关联中，架构出一本书的基本论述。</span><br />8. 确认作者已经解决了哪些问题，还有哪些是没解决的：<span style="color: #999999;">找出作者的解答。</span></p><p><strong>第三阶段：批评规则(请确保自己“了解”后再再评价)。</strong><br />9. 除非你已经完成大纲架构，也能诠释整本书了，否则不要轻易批评。<br />10. 不要争强好胜，非辩到底不可。<br />11. 在说出评论之前，你要能证明自己区别得出真正的知识与个人观点的不同。<br />12. 证明作者的知识不足：<span style="color: #999999;">缺少某些相关的知识</span><br />13. 证明作者的知识错误：<span style="color: #999999;">理念不正确</span><br />14. 证明作者不合逻辑：<span style="color: #999999;">推论荒谬</span><br />15. 证明作者的分析与理由是不完整的：<span style="color: #999999;">并没有解决提出的问题<br /></span></p><p><strong>四个问题：</strong><br />1. 这整本书的内容是在谈些什么：<span style="color: #999999;">根据第一阶段总结</span><br />2. 内容的细节是什么？是如何表现出来的：<span style="color: #999999;">根据第二阶段总结</span><br />3. 这本书说的是真实的吗？全部真实或部分真实：<span style="color: #999999;">根据第三阶段总结</span><br />4. 这本书与我何干：<span style="color: #999999;">综合总结</span></p><p><strong>出处：</strong>{authors}《{title}》({year})</p><p><strong>日期：</strong>{today}</p>';
+          '<h3>Ⅲ. 分析阅读<strong></strong></h3>\\n<hr /><p><strong>第一阶段：架构规则。</strong><br /><strong>1. 书籍分类：</strong><span style="color: #999999;">理论性：历史、科学（心理学、几何学、物理学）和哲学；实用性：技巧、实用手册、教导。</span><br /><strong>2. 整本书在谈些什么：</strong><span style="color: #999999;">一两句话或一小段话说。</span><br />3. 整体的架构<span style="color: #999999;">：（1）作者将全书分成五个部分，第一部分谈的是什么，第二部分谈的是什么，第三部分谈的是别的事，第四部分则是另外的观点，第五部分又是另一些事。（2）第一个主要的部分又分成三个段落，第一段落为X，第二段落为Y，第三段落为Z。（3）在第一部分的第一阶段，作者有四个重点，第一个重点是A，第二个重点是B，第三个重点是C，第四个重点是D等等。</span><br />4. 确定作者想要解决的问题：<span style="color: #999999;">找出作者要问的问题。</span><strong></strong></p><p><strong>第二阶段：诠释规则。</strong><br /><strong>5. 诠释作者使用的关键字：</strong><span style="color: #999999;">找出重要单字，透过它们与作者达成共识。</span><br /><strong>6. 由最重要的句子中，抓住作者的重要主旨：</strong><span style="color: #999999;">将一本书中最重要的句子圈出来，找出其中的主旨。</span><br /><strong>7. 知道作者的论述是什么，从内容中找出相关的句子，再重新架构出来：</strong><span style="color: #999999;">从相关文句的关联中，架构出一本书的基本论述。</span><br /><strong>8. 确认作者已经解决了哪些问题，还有哪些是没解决的：</strong><span style="color: #999999;">找出作者的解答。</span></p><p><strong>第三阶段：批评规则(请确保自己“了解”后再再评价)。</strong><br /><strong>9. 除非你已经完成大纲架构，也能诠释整本书了，否则不要轻易批评。</strong><br /><strong>10. 不要争强好胜，非辩到底不可。</strong><br /><strong>11. 在说出评论之前，你要能证明自己区别得出真正的知识与个人观点的不同。</strong><br /><strong>12. 证明作者的知识不足：</strong><span style="color: #999999;">缺少某些相关的知识</span><br /><strong>13. 证明作者的知识错误：</strong><span style="color: #999999;">理念不正确</span><br /><strong>14. 证明作者不合逻辑：</strong><span style="color: #999999;">推论荒谬</span><br /><strong>15. 证明作者的分析与理由是不完整的：</strong><span style="color: #999999;">并没有解决提出的问题<br /></span></p><p><strong>四个问题：</strong><br /><strong>1. 这整本书的内容是在谈些什么：</strong><span style="color: #999999;">根据第一阶段总结</span><br /><strong>2. 内容的细节是什么？是如何表现出来的：</strong><span style="color: #999999;">根据第二阶段总结</span><br /><strong>3. 这本书说的是真实的吗？全部真实或部分真实：</strong><span style="color: #999999;">根据第三阶段总结</span><br /><strong>4. 这本书与我何干：</strong><span style="color: #999999;">综合总结</span></p><p><strong>出处：</strong>{authors}《{title}》({year})</p><p><strong>日期：</strong>{today}</p>';
         Zotero.Prefs.set("HowToReadABook.analyticalreading", pref);
+      }
+      break;
+    case "realisticanalyticalreading":
+      // 实用型分析阅读
+      pref = Zotero.Prefs.get("HowToReadABook.realisticanalyticalreading");
+      if (!pref) {
+        pref =
+          '<h3>Ⅲ. 分析阅读<strong></strong></h3>\\n<hr style="color: #bbbbbb;" /><p><strong>第一阶段：架构规则。</strong><br /><strong>1. 书籍分类：</strong><span style="color: #999999;">理论性：历史、科学（心理学、几何学、物理学）和哲学；实用性：技巧、实用手册、教导。</span><br /><strong>2. 整本书在谈些什么：</strong><span style="color: #999999;">一两句话或一小段话说。</span><br /><strong>3. 整体的架构：</strong><span style="color: #999999;">（1）作者将全书分成五个部分，第一部分谈的是什么，第二部分谈的是什么，第三部分谈的是别的事，第四部分则是另外的观点，第五部分又是另一些事。（2）第一个主要的部分又分成三个段落，第一段落为X，第二段落为Y，第三段落为Z。（3）在第一部分的第一阶段，作者有四个重点，第一个重点是A，第二个重点是B，第三个重点是C，第四个重点是D等等。</span><br /><strong>4. 作者想要你做什么：</strong><span style="color: #999999;">找出作者想要你做什么</span><strong></strong></p><p><strong>第二阶段：诠释规则。</strong><br /><strong>5. 诠释作者使用的关键字：</strong><span style="color: #999999;">找出重要单字，透过它们与作者达成共识。</span><br /><strong>6. 由最重要的句子中，抓住作者的重要主旨：</strong><span style="color: #999999;">将一本书中最重要的句子圈出来，找出其中的主旨。</span><br /><strong>7. 知道作者的论述是什么，从内容中找出相关的句子，再重新架构出来：</strong><span style="color: #999999;">从相关文句的关联中，架构出一本书的基本论述。</span><br /><strong>8.了解他要你这么做的目的：</strong><span style="color: #999999;">找出作者的目的。</span></p><p><strong>第三阶段：批评规则(请确保自己“了解”后再再评价)。</strong><br /><strong>9. 除非你已经完成大纲架构，也能诠释整本书了，否则不要轻易批评。</strong><br /><strong>10. 不要争强好胜，非辩到底不可。</strong><br /><strong>11. 在说出评论之前，你要能证明自己区别得出真正的知识与个人观点的不同。</strong><br /><strong>12. 证明作者的知识不足：</strong><span style="color: #999999;">缺少某些相关的知识</span><br /><strong>13. 证明作者的知识错误：</strong><span style="color: #999999;">理念不正确</span><br /><strong>14. 证明作者不合逻辑：</strong><span style="color: #999999;">推论荒谬</span><br /><strong>15. 证明作者的分析与理由是不完整的：</strong><span style="color: #999999;">并没有解决提出的问题<br /></span></p><p><strong>四个问题：</strong><br /><strong>1. 这整本书的内容是在谈些什么：</strong><span style="color: #999999;">根据第一阶段总结</span><br /><strong>2. 内容的细节是什么？是如何表现出来的：</strong><span style="color: #999999;">根据第二阶段总结</span><br /><strong>3. 作者的目的是什么：</strong><span style="color: #999999;">根据第二阶段总结</span><br /><strong>4. 他建议用什么方法达到这个目的：</strong><span style="color: #999999;">根据第二阶段总结</span></p><p><strong>出处：</strong>{authors}《{title}》({year})</p><p><strong>日期：</strong>{today}</p>';
+        Zotero.Prefs.set("HowToReadABook.realisticanalyticalreading", pref);
+      }
+      break;
+    case "visualizeanalyticalreading":
+      // 想像文学分析阅读
+      pref = Zotero.Prefs.get("HowToReadABook.visualizeanalyticalreading");
+      if (!pref) {
+        pref =
+          '<h3>Ⅲ. 分析阅读<strong></strong></h3>\\n<hr style="color: #bbbbbb;" /><p><strong>第一阶段：架构规则。</strong><br /><strong>1. 书籍分类：</strong><span style="color: #999999;">小说、戏剧、抒情诗。</span><br /><strong>2. 整本书在谈些什么：</strong><span style="color: #999999;">一两句话来说明大意。一篇故事的大意总是在情节之中。</span><br /><strong>3. 整体的架构：</strong><span style="color: #999999;">故事从哪里开始，中间经过些什么事，最后的结局是什么。</span><strong></strong></p><p><strong>第二阶段：诠释规则。</strong><br /><strong>4. 小说的要素是插曲、事件、角色与他们的思想、言语、感觉及行动：</strong><span style="color: #999999;">找出重要单字，透过它们与作者达成共识。</span><br /><strong>5. 由最重要的句子中，抓住作者的重要主旨：</strong><span style="color: #999999;">变成其中的成员，愿意与其中的角色做朋友，运用同情心与洞察力参与事件的发生，就像你会为朋友的遭遇所做的事一样。</span><br /><strong>6. 加入这个想象世界，与他们生活在一起。</strong></p><p><strong>四个问题：</strong><br /><strong>1. 这整本书的内容是在谈些什么：</strong><span style="color: #999999;">你能说出关于一个故事、戏剧或诗的情节大意，并要能广泛地包括故事或抒情诗中的动作与变化。</span><br /><strong>2. 内容的细节是什么？是如何表现出来的：</strong><span style="color: #999999;">你要能辨别剧中所有不同的角色，并用你自己的话重新叙述过发生在他们身上的关键事件。</span><br /><strong>3. 这本书说的是真实的吗？全部真实或部分真实：</strong><span style="color: #999999;">你能合理地评断一本书的真实性。</span><br /><strong>4. 这本书与我何干：</strong><span style="color: #999999;">不一定得回答。</span></p><p><strong>出处：</strong>{authors}《{title}》({year})</p><p><strong>日期：</strong>{today}</p><p><strong>日期：</strong>{today}</p>';
+        Zotero.Prefs.set("HowToReadABook.visualizeanalyticalreading", pref);
       }
       break;
     case "syntopicalreading":
@@ -122,6 +142,8 @@ HowToReadABook.initPrefs = function (item) {
     default:
       this.initPrefs("inspectionalreading");
       this.initPrefs("analyticalreading");
+      this.initPrefs("realisticanalyticalreading");
+      this.initPrefs("visualizeanalyticalreading");
       this.initPrefs("syntopicalreading");
       this.initPrefs("structuralnotemaking");
       this.initPrefs("conceptualnotemaking");
@@ -227,6 +249,14 @@ HowToReadABook.inspectionalreading = function () {
 
 HowToReadABook.analyticalreading = function () {
   this.newCard("analyticalreading");
+};
+
+HowToReadABook.realisticanalyticalreading = function () {
+  this.newCard("realisticanalyticalreading");
+};
+
+HowToReadABook.visualizeanalyticalreading = function () {
+  this.newCard("visualizeanalyticalreading");
 };
 
 HowToReadABook.syntopicalreading = function () {
@@ -401,6 +431,12 @@ if (typeof window !== "undefined") {
   // note sure about any of this
   window.Zotero.HowToReadABook.inspectionalreading = function () {
     HowToReadABook.inspectionalreading();
+  };
+  window.Zotero.HowToReadABook.realisticanalyticalreading = function () {
+    HowToReadABook.realisticanalyticalreading();
+  };
+  window.Zotero.HowToReadABook.visualizeanalyticalreading = function () {
+    HowToReadABook.visualizeanalyticalreading();
   };
   window.Zotero.HowToReadABook.analyticalreading = function () {
     HowToReadABook.analyticalreading();
