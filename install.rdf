@@ -12,7 +12,7 @@
         RDF:about="urn:mozilla:install-manifest"
         em:id="HowToReadABook@018.ai"
         em:name="HowToReadABook"
-        em:version="1.0.0"
+        em:version="1.0.1"
         em:type="2"
         em:iconURL="chrome://HowToReadABook/skin/HowToReadABook.png"
         em:icon64URL="chrome://HowToReadABook/skin/HowToReadABook64.png"
